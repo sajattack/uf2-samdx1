@@ -19,6 +19,8 @@ jobs:
       with:
         submodules: false
         show-progress: false
+        fetch-depth: 0
+        filter: "blob:none"
     - name: Set up compiler
       uses: carlosperate/arm-none-eabi-gcc-action@v1
       with:
