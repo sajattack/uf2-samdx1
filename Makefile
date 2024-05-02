@@ -98,7 +98,8 @@ SELF_EXECUTABLE_INO=$(BUILD_PATH)/update-$(NAME).ino
 
 SUBMODULES = lib/uf2/README.md
 
-all: $(SUBMODULES) dirs $(EXECUTABLE) $(SELF_EXECUTABLE)
+all: submodules dirs $(EXECUTABLE) $(SELF_EXECUTABLE)
+submodules: $(SUBMODULES)
 
 r: run
 b: burn
@@ -218,10 +219,10 @@ ifeq ($(CHIP_FAMILY),samd21)
 endif
 
 drop-pkg:
-	mv build/drop build/uf2-samd21-$(UF2_VERSION_BASE)
-	cp bin-README.md build/uf2-samd21-$(UF2_VERSION_BASE)/README.md
-	cd build; 7z a uf2-samd21-$(UF2_VERSION_BASE).zip uf2-samd21-$(UF2_VERSION_BASE)
-	rm -rf build/uf2-samd21-$(UF2_VERSION_BASE)
+	mv build/drop build/uf2-samdx1-$(UF2_VERSION_BASE)
+	cp bin-README.md build/uf2-samdx1-$(UF2_VERSION_BASE)/README.md
+	cd build; 7z a uf2-samdx1-$(UF2_VERSION_BASE).zip uf2-samdx1-$(UF2_VERSION_BASE)
+	rm -rf build/uf2-samdx1-$(UF2_VERSION_BASE)
 
 all-boards:
 	for f in `cd boards; ls` ; do "$(MAKE)" BOARD=$$f drop-board || break -1; done
