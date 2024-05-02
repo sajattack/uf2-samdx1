@@ -26,8 +26,11 @@ jobs:
         release: '13.2.Rel1'    
     - name: Build
       run: make submodules && make -j$(nproc) all-boards && make drop-pkg
+    - name: Extract version identifier
+      run: |
+        echo >> $GITHUB_ENV "UF2_VERSION_BASE=`git describe --dirty --always --tags`"
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with: 
-        path: build/uf2-samdx1-*.zip
-
+        path: build/uf2-samdx1-${{ env.UF2_VERSION_BASE }}.zip
+        name: uf2-samdx1-${{ env.UF2_VERSION_BASE }}.zip
