@@ -12,7 +12,7 @@
 #define USB_VID 0x1209
 #define USB_PID 0xDADD
 
-#define BOARD_RGBLED_CLOCK_PIN            PIN_PA19
-#define BOARD_RGBLED_DATA_PIN             PIN_PA18
+#define BOARD_NEOPIXEL_PIN PIN_PA18
+#define BOARD_NEOPIXEL_COUNT 1
 
 #endif
